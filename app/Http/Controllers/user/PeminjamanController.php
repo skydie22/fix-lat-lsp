@@ -16,7 +16,7 @@ class PeminjamanController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function indexRiwayat()
+    public function riwayatPeminjaman()
     {
         $peminjaman = Peminjaman::where('user_id' , Auth::user()->id)->get();
         return view('user.riwayat_peminjaman' , compact('peminjaman'));
@@ -54,10 +54,29 @@ class PeminjamanController extends Controller
      */
     public function store(Request $request)
     {
-        $peminjaman = Peminjaman::create($request->all());
+        $peminjaman = Peminjaman::create([
+            'user_id' => $request->user_id,
+            'buku_id' => $request->buku_id,
+            'tanggal_peminjaman' => $request->tanggal_peminjaman,
+            'kondisi_buku_saat_dipinjam' => $request->kondisi_buku_saat_dipinjam
+        ]);
 
+        $buku = Buku::where('id' , $request->buku_id)->first();
+
+        if ($request->kondisi_buku_saat_dipinjam == 'baik') {
+            $buku->update([
+                'j_buku_baik' => $buku->j_buku_baik -1
+            ]);
+        }
+
+        if ($request->kondisi_buku_saat_dipinjam == 'rusak') {
+            $buku->update([
+                'j_buku_rusak' => $buku->j_buku_rusak -1
+            ]);
+        }
+        
         if ($peminjaman) {
-            return redirect()->route('user.form.peminjaman')->with('status' , 'success')->with('msg' , 'berhasil menambah data');
+            return redirect()->route('user.riwayat.peminjaman')->with('status' , 'success')->with('msg' , 'berhasil menambah data');
         }
         return redirect()->back()->with('status', 'danger')->with('msg' , 'gagal menambah data');
 

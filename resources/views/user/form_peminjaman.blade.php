@@ -1,5 +1,6 @@
 @extends('layouts.master')
 
+
 @section('content')
 <div class="container">
 
@@ -11,10 +12,16 @@
        <div class="card-body">
            <form action="{{ route('submit.peminjaman') }}" method="POST" class="form-group">
             @csrf
+                <div class="mb-3">
+                    <label>Nama Anggota</label>
+                    <input type="text" class="form-control" name="fullname" value="{{ Auth::user()->fullname }}" readonly> 
+                </div>
+
                <div class="mb-3">
                    <label>Tanggal Peminjaman</label>
                    <input type="date" class="form-control" name="tanggal_peminjaman" value="{{ date('Y-m-d') }}" readonly>
                </div>
+
 
                <div class="mb-3">
                    <label for="">Pilih Buku</label>
