@@ -18,6 +18,12 @@ class PengembalianController extends Controller
         return view('user.form_pengembalian' , compact('judul'));
     }
 
+    public function riwayatPengembalian()
+    {
+        $pengembalian = Peminjaman::where('user_id' , Auth::user()->id)->get();
+        return view('user.riwayat_pengembalian'  , compact('pengembalian'));
+    }
+
     public function store(Request $request)
     {
         $cek = Peminjaman::where('user_id' , $request->user_id)
@@ -61,6 +67,6 @@ class PengembalianController extends Controller
             ]);
         }
 
-        return redirect()->back();
+        return redirect()->route('user.riwayat.pengembalian');
     }
 }

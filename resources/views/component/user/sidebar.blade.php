@@ -33,7 +33,7 @@
                 <a href="{{ route('user.pengembalian') }}">Formulir Pengembalian Buku</a>
             </li>
             <li class="submenu-item ">
-                <a href="#">Riwayat Pengembalian Buku</a>
+                <a href="{{ route('user.riwayat.pengembalian') }}">Riwayat Pengembalian Buku</a>
             </li>
         </ul>
     </li>
@@ -52,11 +52,9 @@
         </a>
     </li>
 
-    <li class="sidebar-item     ">
-        <a href="{{ route('logout') }}"
-            onclick="event.preventDefault();
-                document.getELementById('logout-form').submit();"
-            class="sidebar-link">
+    <li class="sidebar-item {{ request()->is('logout*') ? 'active' : '' }} ">
+        <a href="{{ route('logout') }}" onclick="event.preventDefault();
+document.getElementById('logout-form').submit();" class="sidebar-link">
             <i class="bi bi-arrow-left-square-fill"></i>
             <span>Logout</span>
         </a>
@@ -65,15 +63,6 @@
             @csrf
         </form>
     </li>
-
-    
-
-    <li class="sidebar-item">
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-            @csrf
-        </form>
-    </li>
-
 </ul>
 
     

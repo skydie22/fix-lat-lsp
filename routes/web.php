@@ -37,7 +37,9 @@ Route::prefix('user')->group(function () {
    Route::post('/form_peminjaman' , [PeminjamanController::class , 'form']);
    Route::post('/peminjaman/submit' , [PeminjamanController::class , 'store'])->name('submit.peminjaman');
    Route::get('/pengembalian', [PengembalianController::class , 'index'])->name('user.pengembalian');
+   Route::get('/pengembalian/riwayat' , [PengembalianController::class , 'riwayatPengembalian'])->name('user.riwayat.pengembalian');
    Route::post('/pengembalian/submit' , [PengembalianController::class , 'store'])->name('submit.pengembalian');
    Route::get('/pesan', [PesanController::class , 'index'])->name('user.pesan');
    Route::get('/profile', [ProfileController::class , 'index'])->name('user.profile');
+   Route::put('/profile/update/' , [ProfileController::class , 'update'])->name('user.profile.update');
 });

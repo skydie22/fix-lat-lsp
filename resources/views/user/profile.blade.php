@@ -19,7 +19,7 @@
          <h4>Update profile</h4>
       </div>
       <div class="card-body">
-         <form method="POST" enctype="multipart/form-data">
+         <form method="POST" action="{{ route('user.profile.update') }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <table class="table table-stripped bordered">
