@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\PesanController;
 use App\Http\Controllers\user\DashboardController;
 use App\Http\Controllers\user\PeminjamanController;
 use App\Http\Controllers\user\PengembalianController;
 use App\Http\Controllers\user\ProfileController;
+use App\Http\Middleware\Role;
 use App\Models\Peminjaman;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -42,4 +44,8 @@ Route::prefix('user')->group(function () {
    Route::get('/pesan', [PesanController::class , 'index'])->name('user.pesan');
    Route::get('/profile', [ProfileController::class , 'index'])->name('user.profile');
    Route::put('/profile/update/' , [ProfileController::class , 'update'])->name('user.profile.update');
+});
+
+Route::prefix('admin')->group(function () {
+   Route::get('/dashboard' , [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 });

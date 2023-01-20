@@ -68,7 +68,13 @@
                     </div>
                 </div>
                 <div class="sidebar-menu">
+                  @if (Auth::user()->role == 'admin')
+                  @include('component.admin.sidebar')
+
+                  @else
                   @include('component.user.sidebar')
+                      
+                  @endif
                 </div>
             </div>
         </div>  
