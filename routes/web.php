@@ -32,7 +32,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 
-Route::prefix('user')->group(function () {
+Route::prefix('user')->middleware(['auth' , 'role:user'])->group(function () {
    Route::get('/dashboard', [DashboardController::class, 'index'])->name('user.dashboard');
    Route::get('/peminjaman/riwayat', [PeminjamanController::class , 'riwayatPeminjaman'])->name('user.riwayat.peminjaman');
    Route::get('/form_peminjaman' , [PeminjamanController::class , 'indexForm'])->name('user.form.peminjaman');
@@ -46,6 +46,6 @@ Route::prefix('user')->group(function () {
    Route::put('/profile/update/' , [ProfileController::class , 'update'])->name('user.profile.update');
 });
 
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware(['auth' , 'role:admin'])->group(function () {
    Route::get('/dashboard' , [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 });
