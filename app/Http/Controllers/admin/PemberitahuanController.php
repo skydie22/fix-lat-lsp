@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
 use App\Models\Pemberitahuan;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
 
 class PemberitahuanController extends Controller
 {

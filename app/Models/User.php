@@ -25,7 +25,8 @@ class User extends Authenticatable
         'alamat',
         'kode',
         'foto',
-        'join_date'
+        'join_date',
+        'role'
         
     ];
 

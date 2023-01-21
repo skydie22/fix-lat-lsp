@@ -1,6 +1,11 @@
 <?php
 
+use App\Http\Controllers\admin\BukuController;
 use App\Http\Controllers\admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\admin\KategoriController;
+use App\Http\Controllers\admin\PeminjamanController as AdminPeminjamanController;
+use App\Http\Controllers\admin\PenerbitController;
+use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\PesanController;
 use App\Http\Controllers\user\DashboardController;
 use App\Http\Controllers\user\PeminjamanController;
@@ -48,4 +53,11 @@ Route::prefix('user')->middleware(['auth' , 'role:user'])->group(function () {
 
 Route::prefix('admin')->middleware(['auth' , 'role:admin'])->group(function () {
    Route::get('/dashboard' , [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+   Route::get('/penerbit' , [PenerbitController::class, 'index'])->name('admin.data.penerbit');
+   Route::get('/anggota' , [UserController::class, 'indexAnggota'])->name('admin.data.anggota');
+   Route::get('/administrator' , [UserController::class , 'indexAdmin'])->name('admin.data.admin');
+   Route::get('/datapeminjaman' , [AdminPeminjamanController::class , 'index'])->name('admin.data.peminjaman');
+
+   Route::get('/databuku' , [BukuController::class , 'index'])->name('admin.data.buku');
+   Route::get('/kategoribuku' , [KategoriController::class, 'index'])->name('admin.kategori.buku');
 });

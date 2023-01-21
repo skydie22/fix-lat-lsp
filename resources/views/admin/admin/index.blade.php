@@ -5,7 +5,7 @@
     <div class="page-title">
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>Data Penerbit</h3>
+                <h3>Data Administrator</h3>
             
             </div>
 
@@ -14,29 +14,28 @@
     <section class="section">
         <div class="card">
             <div class="card-header">
-                <p>Data Penerbit</p>
+                <p>Data Administrator</p>
             </div>
             <div class="card-body">
                 <table class="table table-striped" id="table1">
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Kode Penerbit</th>
-                            <th>Nis</th>
-                            <th>Nama Penerbit</th>
-                            <th>Status</th>
-                
+                            <th>Nama Lengkap</th>
+                            <th>Nama Pengguna</th>
+                            <th>Kata Sandi</th>
+                            <th>Terakhir Login </th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($dataPenerbit as $p)
+                        @foreach ($admin as $a)
                             
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $p->kode }}</td>
-                            <td>{{ $p->nama }}</td>
-                            <td>{{ $p->verif }}</td>
-                           
+                            <td>{{$a->fullname  }}</td>
+                            <td>{{ $a->username }}</td>
+                            <td>{{ $a->password }}</td>
+                            <td>{{ $a->terakhir_login  }}</td>
 
 
                         </tr>

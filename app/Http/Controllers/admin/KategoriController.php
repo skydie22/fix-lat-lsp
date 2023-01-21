@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
 use App\Models\Kategori;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
 
 class KategoriController extends Controller
 {
@@ -14,7 +16,8 @@ class KategoriController extends Controller
      */
     public function index()
     {
-        //
+        $dataKategori = Kategori::all();
+        return view('admin.kategori_buku.index' , compact('dataKategori'));
     }
 
     /**

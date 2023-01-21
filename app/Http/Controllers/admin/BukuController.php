@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Buku;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class BukuController extends Controller
      */
     public function index()
     {
-        //
+        $dataBuku = Buku::all();
+        return view('admin.data_buku.index' , compact('dataBuku'));
     }
 
     /**

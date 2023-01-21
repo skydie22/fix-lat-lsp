@@ -15,16 +15,16 @@
         </a>
         <ul class="submenu ">
             <li class="submenu-item ">
-                <a href="#">Data Anggota</a>
+                <a href="{{ route('admin.data.anggota') }}">Data Anggota</a>
             </li>
             <li class="submenu-item ">
-                <a href="#">Data Penerbit</a>
+                <a href="{{ route('admin.data.penerbit') }}">Data Penerbit</a>
             </li>
             <li class="submenu-item ">
-                <a href="#">Administrator</a>
+                <a href="{{ route('admin.data.admin') }}">Administrator</a>
             </li>
             <li class="submenu-item ">
-                <a href="#">Data Peminjaman</a>
+                <a href="{{ route('admin.data.peminjaman') }}">Data Peminjaman</a>
             </li>
         </ul>
     </li>
@@ -36,10 +36,10 @@
         </a>
         <ul class="submenu ">
             <li class="submenu-item ">
-                <a href="#">Data Buku</a>
+                <a href="{{ route('admin.data.buku') }}">Data Buku</a>
             </li>
             <li class="submenu-item ">
-                <a href="#">Kategori Buku</a>
+                <a href="{{ route('admin.kategori.buku') }}">Kategori Buku</a>
             </li>
         </ul>
     </li>
