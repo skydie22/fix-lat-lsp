@@ -13,6 +13,7 @@ use App\Http\Controllers\user\PengembalianController;
 use App\Http\Controllers\user\ProfileController;
 use App\Http\Middleware\Role;
 use App\Models\Peminjaman;
+use App\Models\Pesan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -49,6 +50,7 @@ Route::prefix('user')->middleware(['auth' , 'role:user'])->group(function () {
    Route::get('/pesan/masuk', [PesanController::class , 'indexMasuk'])->name('user.pesan.masuk');
    Route::post('/pesan/masuk/ubah_status', [PesanController::class , 'updateStatus'])->name('user.pesan.masuk.update');
    Route::get('/pesan/terkirim', [PesanController::class , 'indexTerkirim'])->name('user.pesan.terkirim');
+   Route::post('/pesan/kirim' , [PesanController::class, 'kirimPesan'])->name('user.pesan.kirim');
    Route::get('/profile', [ProfileController::class , 'index'])->name('user.profile');
    Route::put('/profile/update/' , [ProfileController::class , 'update'])->name('user.profile.update');
 });
@@ -68,4 +70,8 @@ Route::prefix('admin')->middleware(['auth' , 'role:admin'])->group(function () {
 
    Route::get('/databuku' , [BukuController::class , 'index'])->name('admin.data.buku');
    Route::get('/kategoribuku' , [KategoriController::class, 'index'])->name('admin.kategori.buku');
+   Route::get('/pesan/masuk' , [PesanController::class, 'indexAdminMasuk'])->name('admin.pesan.masuk');
+   Route::get('/pesan/terkirim' , [PesanController::class, 'indexAdminterkirim'])->name('admin.pesan.terkirim');
+   Route::post('/pesan/masuk/Ubah_status' , [PesanController::class , 'updateStatusAdmin'])->name('admin.pesan.masuk.update');
+
 });

@@ -36,5 +36,4 @@
 
     </div>
 </div>
-@include('user.pesan.form')
 @endsection
