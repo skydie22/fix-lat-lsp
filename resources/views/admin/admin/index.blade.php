@@ -14,7 +14,7 @@
     <section class="section">
         <div class="card">
             <div class="card-header">
-                <p>Data Administrator</p>
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#tambah-admin">Tambah Admin</button>
             </div>
             <div class="card-body">
                 <table class="table table-striped" id="table1">
@@ -25,6 +25,7 @@
                             <th>Nama Pengguna</th>
                             <th>Kata Sandi</th>
                             <th>Terakhir Login </th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -36,7 +37,7 @@
                             <td>{{ $a->username }}</td>
                             <td>{{ $a->password }}</td>
                             <td>{{ $a->terakhir_login  }}</td>
-
+                            <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#hapus-admin{{ $a->id }}">delete</button></td>
 
                         </tr>
                        
@@ -48,4 +49,6 @@
 
     </section>
 </div>
+@include('admin/admin/create')
+@include('admin/admin/delete')
 @endsection

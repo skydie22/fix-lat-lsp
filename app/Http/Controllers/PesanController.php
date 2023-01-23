@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pesan;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PesanController extends Controller
 {
@@ -12,10 +14,21 @@ class PesanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function indexMasuk()
     {
-        //
+        $pesanMasuk = Pesan::where('pengirim_id' , '!=', Auth::user()->id)->where('penerima_id' , Auth::user()->id)->get();
+
+        return view('user.pesan.masuk' ,compact('pesanMasuk'));
     }
+
+    public function indexTerkirim()
+    {
+        $pesanTerkirim = Pesan::where('penerima_Id' , '!=' , Auth::user()->id)->where('pengirim_id' , Auth::user()->id)->get();
+        $penerima = User::where('role' , 'admin')->get();
+
+        return view('user.pesan.terkirim' , compact('pesanTerkirim' , 'penerima'));
+    }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -67,9 +80,14 @@ class PesanController extends Controller
      * @param  \App\Models\Pesan  $pesan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pesan $pesan)
+    public function updateStatus(Request $request, Pesan $pesan)
     {
-        //
+        $status = Pesan::where('id' , $request->id)->first();
+        $status->update([
+            'status' => 'terbaca'
+        ]);
+
+        return redirect()->back();
     }
 
     /**

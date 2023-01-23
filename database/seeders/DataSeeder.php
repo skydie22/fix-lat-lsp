@@ -156,12 +156,49 @@ class DataSeeder extends Seeder
             'status' => 'terkirim',
             'tanggal_kirim' => '2022-12-01',
         ]);
+
+        Pesan::create([
+            'pengirim_id' => 1,
+            'penerima_id' => 2,
+            'judul' => 'Balikin WOY',
+            'isi' => 'Balikin Buku WOYY',
+            'status' => 'terkirim',
+            'tanggal_kirim' => '2022-12-01',
+        ]);
+
+        Pesan::create([
+            'pengirim_id' => 1,
+            'penerima_id' => 2,
+            'judul' => 'Balikin WOY',
+            'isi' => 'Balikin Buku WOYY',
+            'status' => 'terkirim',
+            'tanggal_kirim' => '2022-12-01',
+        ]);
+
+        Pesan::create([
+            'pengirim_id' => 1,
+            'penerima_id' => 2,
+            'judul' => 'Balikin WOY',
+            'isi' => 'Balikin Buku WOYY',
+            'status' => 'terkirim',
+            'tanggal_kirim' => '2022-12-01',
+        ]);
+
+        Pesan::create([
+            'pengirim_id' => 1,
+            'penerima_id' => 2,
+            'judul' => 'Balikin WOY',
+            'isi' => 'Balikin Buku WOYY',
+            'status' => 'terkirim',
+            'tanggal_kirim' => '2022-12-01',
+        ]);
+        
         Pesan::create([
             'pengirim_id' => 2,
             'penerima_id' => 1,
             'judul' => 'Balikin Kak',
             'isi' => 'Balikin plis bang',
-            'status' => 'terbaca',
+            'status' => 'terkirim',
             'tanggal_kirim' => '2022-12-01',
         ]);
 

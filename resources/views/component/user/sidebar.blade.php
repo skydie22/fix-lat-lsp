@@ -38,11 +38,30 @@
         </ul>
     </li>
 
-    <li class="sidebar-item  ">
+    {{-- <li class="sidebar-item  ">
         <a href="{{ route('user.pesan') }}" class='sidebar-link'>
             <i class="bi bi-file-earmark-medical-fill"></i>
             <span>Pesan</span>
         </a>
+    </li> --}}
+
+    <li class="sidebar-item  has-sub">
+        <a href="#" class='sidebar-link'>
+            <i class="bi bi-collection-fill"></i>
+            <span>Pesan</span>
+        </a>
+        <ul class="submenu ">
+            <li class="submenu-item ">
+                <a href="{{ route('user.pesan.masuk') }}">Pesan masuk
+                <span class="badge bg-light-danger badge-pill badge-round float-right mt-50">
+                         {{ count($pesan) }}
+                </span>
+            </a>
+            </li>
+            <li class="submenu-item ">
+                <a href="{{ route('user.pesan.terkirim') }}">Pesan terkirim</a>
+            </li>
+        </ul>
     </li>
 
     <li class="sidebar-item  ">

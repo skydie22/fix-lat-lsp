@@ -46,7 +46,9 @@ Route::prefix('user')->middleware(['auth' , 'role:user'])->group(function () {
    Route::get('/pengembalian', [PengembalianController::class , 'index'])->name('user.pengembalian');
    Route::get('/pengembalian/riwayat' , [PengembalianController::class , 'riwayatPengembalian'])->name('user.riwayat.pengembalian');
    Route::post('/pengembalian/submit' , [PengembalianController::class , 'store'])->name('submit.pengembalian');
-   Route::get('/pesan', [PesanController::class , 'index'])->name('user.pesan');
+   Route::get('/pesan/masuk', [PesanController::class , 'indexMasuk'])->name('user.pesan.masuk');
+   Route::post('/pesan/masuk/ubah_status', [PesanController::class , 'updateStatus'])->name('user.pesan.masuk.update');
+   Route::get('/pesan/terkirim', [PesanController::class , 'indexTerkirim'])->name('user.pesan.terkirim');
    Route::get('/profile', [ProfileController::class , 'index'])->name('user.profile');
    Route::put('/profile/update/' , [ProfileController::class , 'update'])->name('user.profile.update');
 });
@@ -55,7 +57,13 @@ Route::prefix('admin')->middleware(['auth' , 'role:admin'])->group(function () {
    Route::get('/dashboard' , [AdminDashboardController::class, 'index'])->name('admin.dashboard');
    Route::get('/penerbit' , [PenerbitController::class, 'index'])->name('admin.data.penerbit');
    Route::get('/anggota' , [UserController::class, 'indexAnggota'])->name('admin.data.anggota');
+   Route::post('/anggota/add' , [UserController::class , 'storeAnggota'])->name('admin.add.anggota');
+   Route::put('/anggota/update/{id}' , [UserController::class, 'updateAnggota'])->name('admin.update.anggota');
+   Route::delete('/anggota/delete/{id}' , [UserController::class , 'destroyAnggota'])->name('admin.delete.anggota');
    Route::get('/administrator' , [UserController::class , 'indexAdmin'])->name('admin.data.admin');
+   Route::post('/administrator/add' , [UserController::class , 'storeAdmin'])->name('admin.add.admin');
+   Route::delete('/administrator/delete/{id}' , [UserController::class , 'destroyAdmin'])->name('admin.delete.admin');
+
    Route::get('/datapeminjaman' , [AdminPeminjamanController::class , 'index'])->name('admin.data.peminjaman');
 
    Route::get('/databuku' , [BukuController::class , 'index'])->name('admin.data.buku');
